@@ -100,6 +100,5 @@ def read_file(
 ]:
     with open(path) as f:
         data = json.load(f)
-        
     shape = shapely.geometry.shape(data)
     return shape
