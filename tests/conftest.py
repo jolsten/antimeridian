@@ -81,7 +81,9 @@ def read_output() -> Reader:
         GeometryCollection,
     ]:
         path = Path(subdirectory) / name if subdirectory is not None else Path(name)
-        return read_file((OUTPUT_DATA_DIRECTORY / path).with_suffix(".json"))
+        file = (OUTPUT_DATA_DIRECTORY / path).with_suffix(".json")
+        print("file =", f"{file!r}")
+        return read_file(file)
 
     return read_output
 
@@ -100,5 +102,6 @@ def read_file(
 ]:
     with open(path) as f:
         data = json.load(f)
+    print("data =", data)
     shape = shapely.geometry.shape(data)
     return shape
